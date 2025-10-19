@@ -31,16 +31,26 @@ public class Separating {
         while (st.hasMoreTokens()) {
             numberList.add(st.nextToken());
         }
+
         int result = 0;
 
-
         for (String snum : numberList) {
-            // TODO : 음수거나 숫자가 아닌 문자가 있으면 예외처리 필요
-            if (!snum.isEmpty()) {
-                result += Integer.parseInt(snum);
+            if (snum.isEmpty()) {
+                continue;
             }
-        }
 
+            int number;
+            try {
+                number = Integer.parseInt(snum);
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("입력값 중 문자가 있습니다");
+            }
+
+            if (number < 0) {
+                throw new IllegalArgumentException("입력값 중 음수가 있습니다");
+            }
+            result += number;
+        }
         return result; // 0 또는 계산된 sum을 반환
     }
 }
