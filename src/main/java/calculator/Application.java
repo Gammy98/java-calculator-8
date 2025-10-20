@@ -10,7 +10,7 @@ public class Application {
         if (input != null) {
             input = input.replace("\\n", "\n");
         }
-        Separating separated = new Separating();
+        StringCalculator separated = new StringCalculator();
         int result = separated.add(input);
         System.out.println("결과 : " + result);
     }
